@@ -7,105 +7,274 @@ export const module010: PPLModule = {
   shortName: 'Réglementation',
   iconName: 'Scale',
   color: 'blue',
-  description: 'Règles de l’air OACI/EASA, SERA, licences de vol (PPL, LAPL), espaces aériens A à G, règles VFR, emports de documents et gestion des priorités.',
+  description: 'Conventions internationales (OACI), réglementation européenne (EASA Part-FCL, Part-NCO, SERA), licences PPL/LAPL, espaces aériens A à G, règles VFR, emport de documents et responsabilités du commandant de bord.',
   examQuestionsCount: 24,
   examDurationMinutes: 35,
   chapters: [
     {
       id: '010-ch1',
       moduleId: '010',
-      title: 'Licences, Qualifications et Aptitude Médicale',
-      readTime: '6 min',
-      content: `### 1. La Licence de Pilote Privé (PPL(A))
-La licence PPL(A) délivrée conformément à la réglementation européenne Part-FCL autorise son titulaire à agir en tant que commandant de bord (PIC) ou copilote sur des avions ou motoplaneurs sans rémunération dans des vols non commerciaux.
+      title: 'Organisations, Licences (PPL/LAPL) et Aptitude Médicale',
+      readTime: '9 min',
+      content: `### 1. Le Cadre Réglementaire : OACI, EASA et DGAC
+L'aviation civile mondiale et européenne s'organise autour d'institutions hiérarchisées :
+- **OACI (Organisation de l'Aviation Civile Internationale)** : Créée par la **Convention de Chicago de 1944**, agence de l'ONU siégeant à Montréal. Elle édicte les **Annexes** (SARPs - Standards and Recommended Practices) qui harmonisent l'aviation mondiale : Annexe 1 (Licences du personnel), Annexe 2 (Règles de l'air), Annexe 6 (Exploitation technique), Annexe 8 (Navigabilité).
+- **EASA (European Union Aviation Safety Agency)** : Agence européenne de la sécurité aérienne basée à Cologne. Elle rédige la réglementation commune applicable dans tous les pays membres :
+  - **Part-FCL** (Flight Crew Licensing) : licences et qualifications des pilotes.
+  - **Part-MED** : normes médicales.
+  - **SERA** (Standardised European Rules of the Air) : règles de l'air unifiées.
+  - **Part-NCO** (Non-Commercial Operations with other than complex motor-powered aircraft) : règles opérationnelles pour l'aviation générale privée.
+- **DGAC (Direction Générale de l'Aviation Civile)** : Autorité nationale française (DSAC) chargée de veiller à l'application des règlements européens, de délivrer les titres aéronautiques et de gérer les espaces aériens nationaux.
 
-#### Conditions de délivrance :
-- **Âge minimum** : 17 ans révolus pour la délivrance (16 ans pour le premier solo).
-- **Heures de vol minimales** : 45 heures d'instruction en vol, dont au moins 25 heures en double commande et au moins 10 heures en solo supervisé (dont 5 heures de navigation solo et un voyage solo d'au moins 270 km / 150 NM avec deux atterrissages complets sur deux aérodromes différents).
-- **Validité de la qualification de classe SEP (Single Engine Piston)** : 24 mois.
-- **Prorogation SEP** : Dans les 12 mois précédant l'expiration : effectuer 12 heures de vol (dont 6h comme PIC), 12 atterrissages et décollages, et 1 vol d'au moins 1 heure d'entraînement avec un instructeur (FI) ; OU passer un contrôle de compétences avec un examinateur (FE) dans les 3 mois précédant l'expiration.
+:::definition Souveraineté de l'Espace Aérien (Convention de Chicago Art. 1)
+Chaque État contractant possède la souveraineté complète et exclusive sur l'espace aérien au-dessus de son territoire et de ses eaux territoriales adjacentes.
+:::
 
-### 2. Aptitude médicale et Certificat Médical
-- Pour une licence PPL(A), un certificat médical de **Classe 2** (ou Classe 1) est obligatoire.
-- Validité Classe 2 :
-  - **60 mois** (5 ans) jusqu'à 40 ans (ou jusqu'au 42e anniversaire si délivré avant 40 ans).
-  - **24 mois** (2 ans) entre 40 et 50 ans (ou jusqu'au 51e anniversaire).
-  - **12 mois** (1 an) après 50 ans.
-- Emport de passagers : Règle des 3 atterrissages/décollages dans les 90 jours précédents sur le même type/classe (de nuit pour emport de passagers de nuit sauf qualif IR).`,
+### 2. La Licence de Pilote Privé PPL(A) vs LAPL(A)
+La licence PPL(A) permet de voler sans rémunération sur des avions ou motoplaneurs dans le monde entier, sous réserve du respect des privilèges de la licence.
+
+#### Privilèges et conditions d'accès :
+- **Âge minimal** : **16 ans révolus** pour effectuer le premier vol solo, **17 ans révolus** le jour de la délivrance de la licence.
+- **Formation minimale requise (Part-FCL.210.A)** :
+  - Au moins **45 heures d'instruction en vol** sur avion (dont un maximum de 5 heures peut être effectué sur simulateur certifié FSTD).
+  - Au moins **25 heures en double commande** avec un instructeur qualifié (FI).
+  - Au moins **10 heures en solo supervisé**, comprenant obligatoirement :
+    - Au moins 5 heures de vol en campagne en solo.
+    - Au moins **un vol de navigation solo d'au moins 270 km (150 NM)** au cours duquel deux atterrissages complets avec arrêt sont effectués sur deux aérodromes différents de celui de départ.
+
+:::piege Différence PPL(A) vs LAPL(A) à l'Examen
+- **LAPL(A)** (Light Aircraft Pilot Licence) : valable en Europe uniquement, 30 heures de vol requises, limité à 4 personnes à bord (pilote + 3 passagers) et masse maximale MTOW de 2 000 kg.
+- **PPL(A)** : licence OACI reconnue mondialement, sans limitation intrinsèque de masse (dépend des qualifications de classe ou de type détenues), permet d'ajouter des qualifications IFR (vol aux instruments), multimoteurs (MEP), ou d'évoluer vers le CPL professionnel.
+:::
+
+### 3. La Qualification de Classe SEP (Single Engine Piston)
+La qualification de classe monomoteur à piston terrestre SEP(terre) est rattachée à la licence :
+- **Validité** : **24 mois (2 ans)**.
+- **Prorogation (avant expiration)** : Pour proroger sa qualification SEP sans passer d'examen en vol, le pilote doit, dans les **12 mois précédant la date d'expiration** :
+  1. Avoir accompli au moins **12 heures de vol** sur la classe SEP ou TMG, dont au moins **6 heures en tant que commandant de bord (PIC)**.
+  2. Avoir effectué au moins **12 décollages et 12 atterrissages**.
+  3. Avoir réalisé un **vol d'entraînement d'au moins 1 heure** avec un instructeur de vol (FI) (ce vol peut être remplacé par la réussite à un contrôle de compétences ou une épreuve pratique sur une autre classe/type).
+  - *Alternative* : Passer un contrôle de compétences (Proficiency Check) avec un examinateur FE(A) dans les 3 mois précédant l'expiration.
+- **Renouvellement (après expiration)** : Si la date de fin de validité est dépassée même d'un jour, la prorogation sur expérience n'est plus possible ! Le pilote doit obligatoirement suivre une évaluation/remise à niveau en aéroclub ou ATO/DTO puis réussir un contrôle de compétences avec un examinateur FE(A).
+
+:::memo Prorogation vs Renouvellement
+- **Prorogation** = La qualification est encore EN COURS de validité (expérience récente 12h + 1h FI dans la dernière année).
+- **Renouvellement** = La qualification est PÉRIMÉE (test en vol obligatoire avec un FE).
+:::
+
+### 4. Emport de Passagers et Règle des 90 Jours
+Un titulaire du PPL(A) ne peut agir comme commandant de bord transportant des passagers que s'il respecte l'expérience récente suivante (Part-FCL.060) :
+- Avoir effectué, dans les **90 jours précédents**, au moins **3 décollages et 3 atterrissages** en tant que pilote aux commandes sur un avion du même type ou de la même classe.
+- **Emport de passagers de nuit** : Au moins 1 de ces 3 décollages et atterrissages doit avoir été accompli **de nuit**, à moins que le pilote ne soit titulaire d'une qualification de vol aux instruments (IR).
+
+### 5. Aptitude Médicale du Pilote (Part-MED)
+Tout pilote en fonction de commandant de bord doit être titulaire d'un certificat médical aéronautique valide adapté à sa licence :
+- **PPL(A)** : Certificat médical de **Classe 2** (ou Classe 1 professionnelle).
+- **Périodicité de validité du certificat de Classe 2** :
+  - **60 mois (5 ans)** : si le pilote a moins de 40 ans le jour de l'examen (ou jusqu'à son 42e anniversaire si délivré à 39 ans).
+  - **24 mois (2 ans)** : entre 40 ans et 50 ans (ou jusqu'au 51e anniversaire).
+  - **12 mois (1 an)** : après 50 ans révolus.
+
+:::piege Diminution de l'Aptitude Médicale (Part-MED.A.020)
+Le pilote a l'obligation légale de suspendre l'exercice de ses privilèges de vol sans attendre :
+- En cas de maladie, blessure ou intervention chirurgicale de plus de 21 jours.
+- En cas de grossesse constatée.
+- Dès lors qu'il prend un traitement médicamenteux incompatible avec la sécurité des vols.
+Le médecin agréé doit être consulté avant toute reprise des vols.
+:::`,
       keyTakeaways: [
-        "PPL(A) : 17 ans minimum, 45h de vol minimum.",
-        "Validité SEP : 2 ans (24 mois). Prorogation par 12h + 1h FI dans la dernière année ou test FE.",
-        "Certificat Classe 2 : 5 ans (<40 ans), 2 ans (40-50 ans), 1 an (>50 ans).",
-        "Règle des 90 jours : 3 décollages et 3 atterrissages récents pour emporter des passagers."
+        "PPL(A) : 17 ans minimum pour la licence, 16 ans pour le solo, 45h de vol minimum dont 25h en double et 10h solo.",
+        "Navigation solo obligatoire : au moins 270 km (150 NM) avec 2 atterrissages complets sur deux aérodromes extérieurs.",
+        "Validité SEP : 24 mois. Prorogation par 12h de vol (dont 6h PIC) + 12 atterrissages + 1h FI dans les 12 derniers mois.",
+        "Emport de passagers : 3 décollages et 3 atterrissages dans les 90 jours précédents sur le même type/classe.",
+        "Validité Classe 2 : 5 ans (<40 ans), 2 ans (40 à 50 ans), 1 an (>50 ans)."
       ]
     },
     {
       id: '010-ch2',
       moduleId: '010',
-      title: 'Classification des Espaces Aériens et Conditions VMC (SERA)',
-      readTime: '8 min',
+      title: 'Règles de l’Air (SERA) et Classification des Espaces Aériens',
+      readTime: '10 min',
       diagramType: 'airspaces',
-      content: `### 1. Classification OACI / EASA des Espaces Aériens
-L'espace aérien est divisé en classes de A à G :
-- **Classe A** : Strictement interdit au vol VFR ! Réservé uniquement à l'IFR.
-- **Classes B, C, D** : Espaces contrôlés. Clairance radio obligatoire, contact radio permanent (2-way), transpondeur obligatoire (Mode S). Séparation fournie :
-  - En D : Séparation IFR/IFR, information de trafic fournie aux VFR concernant les autres IFR et VFR.
-- **Classe E** : Espace contrôlé pour les IFR, mais les VFR y évoluent librement sans clairance radio (sauf de nuit ou zone d'obligation radio TMZ).
-- **Classe G** : Espace aérien non contrôlé (auto-information sur 123.500 MHz ou fréquence locale, contact non obligatoire mais recommandé).
+      content: `### 1. Classification Internationale des Espaces Aériens (Classes A à G)
+Le règlement européen SERA (SERA.6001) divise l'espace aérien en 7 classes de A à G :
 
-### 2. Règles VFR et visibilité minimale (VMC - Visual Meteorological Conditions)
-#### Au-dessus du FL 100 (ou 10 000 ft AMSL) :
-- Visibilité en vol : **8 km**.
-- Distance aux nuages : 1 500 m horizontalement, 1 000 ft (300 m) verticalement.
+| Classe | Statut | Accès VFR | Clairance ATC requise | Séparation fournie au VFR | Radio / Transpondeur |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **A** | Contrôlé | **INTERDIT** | Non applicable | Non applicable | Non applicable |
+| **B** | Contrôlé | Autorisé | **OUI** | Séparé de TOUS les vols (IFR et VFR) | 2 voies + Mode S |
+| **C** | Contrôlé | Autorisé | **OUI** | Séparé des IFR (info de trafic sur autres VFR) | 2 voies + Mode S |
+| **D** | Contrôlé | Autorisé | **OUI** | Aucune séparation VFR (info de trafic sur IFR et VFR) | 2 voies + Mode S |
+| **E** | Contrôlé | Autorisé | **NON** (de jour) | Aucune séparation VFR (info si charge ATC le permet) | Recommandée (TMZ si spécifié) |
+| **F** | Non contrôlé | Autorisé | NON | Service consultatif (non utilisé en France) | - |
+| **G** | Non contrôlé | Autorisé | **NON** | Information de vol et alerte uniquement | Non obligatoire (sauf TMZ/RMZ) |
 
-#### Sous le FL 100 (et au-dessus de 3 000 ft AMSL ou 1 000 ft sol) :
-- Visibilité en vol : **5 km**.
-- Distance aux nuages : 1 500 m horizontalement, 1 000 ft (300 m) verticalement.
+:::definition Clairance Radio en Espace Contrôlé (B, C, D)
+Une clairance de contrôle est une autorisation délivrée par un organisme de la circulation aérienne (ATC).
+En VFR, vous ne devez **JAMAIS** pénétrer dans un espace de classe B, C ou D sans avoir reçu expressément la clairance du contrôleur (ex: "F-ABCD, transpondeur 4521, autorisé entrée de zone classe D via point S, 1500 ft QNH 1018"). Un simple accusé de réception de votre indicatif ne constitue PAS une clairance !
+:::
 
-#### À ou sous 3 000 ft AMSL (ou 1 000 ft / sol, la plus élevée des deux) :
-- En espace contrôlé (B, C, D, E) : Visibilité 5 km, hors nuages à 1 500 m horiz. et 1 000 ft verticaux.
-- En espace non contrôlé (G) : Visibilité **5 km** (ou 1,5 km à vitesse indiquée ≤ 140 kt), **hors des nuages et en vue du sol ou de l'eau**.
+### 2. Conditions Météorologiques de Vol à Vue (VMC - SERA.5001)
+Pour voler sous régime VFR, le pilote doit impérativement maintenir les conditions VMC :
 
-### 3. VFR Spécial (en CTR contrôlée)
-Permet d'évoluer en CTR quand les conditions météo sont inférieures aux minima VFR :
-- Visi minimale au sol : **1 500 m** (ou en vol 1 500 m).
-- Plafond minimum : **600 ft** (pour décollage/atterrissage).
-- Vitesse maximale recommandée : 140 kt IAS, toujours en vue du sol/eau et hors des nuages.`,
+#### A. Au-dessus de 3 000 ft AMSL ou au-dessus de 1 000 ft sol (la valeur la plus élevée) :
+- **Au-dessus du FL 100 (10 000 ft AMSL)** :
+  - Visibilité en vol minimale : **8 km**.
+  - Distance minimale aux nuages : **1 500 m horizontalement** et **1 000 ft (300 m) verticalement**.
+- **Sous le FL 100** :
+  - Visibilité en vol minimale : **5 km**.
+  - Distance minimale aux nuages : **1 500 m horizontalement** et **1 000 ft (300 m) verticalement**.
+
+#### B. À ou sous 3 000 ft AMSL ou à ou sous 1 000 ft sol (la valeur la plus élevée) :
+- **En espace contrôlé (Classes B, C, D, E)** :
+  - Visibilité en vol minimale : **5 km**.
+  - Distance aux nuages : **1 500 m horizontalement** et **1 000 ft (300 m) verticalement**.
+- **En espace non contrôlé (Classe G)** :
+  - Visibilité minimale : **5 km** (réductible à **1 500 m** si la vitesse indiquée est \(\le 140\text{ kt}\) pour voir et éviter les obstacles).
+  - Distance aux nuages : **Hors des nuages et en vue de la surface (sol ou eau)**.
+
+:::piege Piège Examen DGAC sur la Classe E vs Classe G
+En classe E, l'espace est CONTRÔLÉ pour les vols IFR. Par conséquent, même à 2 000 ft sol, les minima météo VFR exigent une visibilité de 5 km ET le respect strict de la distance aux nuages (1 500 m horizontal et 1 000 ft vertical) ! Seule la classe G autorise le régime "hors des nuages en vue du sol" sous 3 000 ft AMSL.
+:::
+
+### 3. Le VFR Spécial (SERA.5010)
+Dans une zone de contrôle d'aérodrome (CTR) de classe B, C, D ou E, lorsque les conditions météo sont inférieures aux minima VMC, le contrôleur peut délivrer une clairance de **VFR Spécial** :
+- **Minima stricts pour le pilote** :
+  - Visibilité en vol minimale : **1 500 m** (ou au sol 1 500 m si l'information est rapportée).
+  - Plafond nuageux minimal pour décoller ou atterrir : **600 ft (180 m)**.
+  - Vol effectué **hors des nuages et constamment en vue de la surface**.
+  - Vitesse indiquée maximale : **140 kt IAS** pour permettre une détection visuelle suffisante.
+
+### 4. Zones à Statut Particulier (P, D, R, ZIT, TMZ, RMZ)
+- **Zone P (Prohibited - Interdite)** : Pénétration strictement interdite à tout aéronef civil en tout temps (ex: bases militaires sensibles, sites stratégiques).
+- **Zone R (Restricted - Réglementée)** : Pénétration subordonnée au respect de conditions strictes ou interdite pendant les créneaux d'activité publiés (consulter la carte VAC, les NOTAM et le réseau très basse altitude RTBA).
+- **Zone D (Dangerous - Dangereuse)** : Danger pour la navigation (tirs d'artillerie, largages parachutistes, activités pyrotechniques). La pénétration n'est pas formellement interdite par la loi mais vivement déconseillée sans clairance ou coordination.
+- **ZIT (Zone Interdite Temporaire)** : Établie notamment autour des centrales nucléaires (rayon typique 5 km, surface jusqu'à 3 500 ft sol).
+- **TMZ (Transponder Mandatory Zone)** : Transpondeur Mode S actif obligatoire pour pénétrer.
+- **RMZ (Radio Mandatory Zone)** : Contact radio bidirectionnel obligatoire avant pénétration.`,
       keyTakeaways: [
-        "Classe A : INTERDIT aux VFR.",
-        "Classes B, C, D : Clairance et contact radio obligatoires avant de pénétrer.",
-        "Classe E : Contrôlé IFR, libre pour VFR de jour.",
-        "Minima généraux VFR : 5 km de visibilité (8 km > FL 100), 1500 m horiz. et 1000 ft vertic. des nuages.",
-        "En classe G à/sous 3000 ft AMSL : 1,5 km de visi si vitesse ≤ 140 kt, hors nuages en vue du sol."
+        "Classe A : strictement INTERDITE aux vols VFR.",
+        "Classes B, C, D : clairance ATC et contact radio obligatoires avant de pénétrer.",
+        "Classe E : contrôlé pour les IFR mais libre d'accès pour les VFR de jour sans clairance.",
+        "Minima VMC : 8 km de visibilité au-dessus du FL 100 ; 5 km sous le FL 100 avec 1 500 m / 1 000 ft des nuages.",
+        "En classe G sous 3 000 ft AMSL : 1 500 m de visibilité si IAS <= 140 kt, hors nuages en vue du sol.",
+        "VFR Spécial en CTR : visibilité minimale 1 500 m, plafond minimal 600 ft, hors nuages en vue du sol."
       ]
     },
     {
       id: '010-ch3',
       moduleId: '010',
-      title: 'Règles de l’Air, Priorités et Signaux de Détresse',
-      readTime: '7 min',
-      content: `### 1. Hauteurs minimales de survol VFR
-- En règle générale : pas moins de **500 ft (150 m)** au-dessus du sol ou de l'eau, et à une distance d'au moins 150 m de toute personne, véhicule ou obstacle.
-- Au-dessus des villes, agglomérations ou rassemblements de plein air : au moins **1 000 ft (300 m)** au-dessus de l'obstacle le plus élevé dans un rayon de 600 m, et permettant un atterrissage d'urgence en cas de panne sans mettre en danger les personnes au sol.
+      title: 'Services ATS, Transpondeur, Altimétrie et Panne Radio',
+      readTime: '9 min',
+      diagramType: 'altimeter',
+      content: `### 1. Les Trois Niveaux de Services de la Circulation Aérienne (ATS)
+Les organismes au sol fournissent des services de niveau croissant :
+1. **Service de Contrôle de la Circulation Aérienne (ATC)** : Assuré par une Tour de contrôle (TWR), un Contrôle d'approche (APP) ou un Centre de contrôle en route (ACC/CCR). Il émet des **instructions impératives et des clairances** pour prévenir les collisions entre aéronefs.
+2. **Service d'Information de Vol (AFIS - Aerodrome Flight Information Service)** : Présent sur certains aérodromes non contrôlés. L'agent AFIS donne des paramètres essentiels (piste en service, vent, QNH, trafic connu) sous forme d'**informations**, mais ne délivre AUCUNE clairance ! La responsabilité de la séparation incombe intégralement au pilote.
+3. **Auto-information** : En l'absence d'organisme AFIS ou de contrôleur (ou en dehors des heures d'ouverture), les pilotes s'informent mutuellement en diffusant leurs positions et intentions sur la fréquence d'auto-information publiée (ou sur la fréquence nationale **123.500 MHz** par défaut en France).
 
-### 2. Priorités de passage en vol
-- **Convergence** : L'aéronef qui vient de la **droite** a la priorité.
-- **Règle de catégorie** : Plus un aéronef est manœuvrable, moins il est prioritaire :
-  - Ballon libre > Planeur > Dirigeable > Avion remorqueur > Aéronef motopropulsé standard.
-- **Face à face** : Chacun oblique vers sa **droite**.
-- **Dépassement** : L'aéronef qui dépasse le fait par la **droite** et reste à l'écart.
-- **Atterrissage** : L'aéronef le plus bas en finale a la priorité (mais il est interdit de couper la priorité à un aéronef déjà établi). Un aéronef en situation d'urgence a priorité absolue sur tous les autres.
+### 2. Le Transpondeur et ses Modes (SERA.13001)
+Le transpondeur est un émetteur-récepteur secondaire embarqué qui répond aux interrogations radar au sol :
+- **Mode A** : Transmet un code d'identification à 4 chiffres (de 0 à 7, soit 4096 combinaisons).
+- **Mode C** : Transmet en plus l'**altitude-pression de l'aéronef** calée sur 1013,25 hPa par tranche de 100 ft.
+- **Mode S** : Transmet une adresse d'immatriculation numérique unique à 24 bits, une altitude-pression avec une résolution fine de 25 ft, et des paramètres de vol (cap, vitesse). Obligatoire dans la plupart des TMA et TMZ en Europe.
 
-### 3. Transpondeur et Codes d'urgence
-- **7000** : Code VFR standard en Europe (sauf instruction ATC).
-- **7700** : Détresse générale (Mayday - détresse grave et imminente).
-- **7600** : Panne radio (Nordo / Communication Failure).
-- **7500** : Acte d'intervention illicite (Détournement / Hijack).`,
+:::memo Les 4 Codes Transpondeurs Vitaux de l'Examen
+- **7000** : Code standard VFR en France et en Europe (quand aucun code n'est assigné par l'ATC).
+- **7700** : Détresse générale / Urgence vitale (MAYDAY / PAN PAN).
+- **7600** : Panne des télécommunications (NORDO - perte de communication radio).
+- **7500** : Acte d'intervention illicite / Piraterie aérienne (Détournement d'aéronef).
+*Mnémonique en anglais : 75 he's alive (knife), 76 radio fix, 77 going to heaven.*
+:::
+
+### 3. Altimétrie Réglementaire et Règle Semi-Circulaire
+Pour éviter les collisions en croisière, l'altitude de vol est réglementée :
+- **Altitude de Transition (TA)** : Altitude publiée au-dessus de laquelle on quitte le calage QNH pour adopter le calage standard international **1013,25 hPa**, exprimé en **Niveaux de Vol (FL - Flight Levels)**.
+- **Niveau de Transition (TRL)** : Premier niveau de vol utilisable au-dessus de la surface de transition.
+- **Couche de transition** : Espace aérien compris entre la TA et le TRL.
+
+:::formule La Règle Semi-Circulaire en Vol VFR (au-dessus de 3 000 ft sol)
+En vol VFR de croisière au-dessus de 3 000 ft AGL, le pilote doit choisir un niveau de vol conforme à sa **Route Magnétique (Rm)** :
+- **Route Magnétique de 000° à 179° (Vers l'Est)** : Niveau de vol **IMPAIR + 500 ft** (ex: FL 35, FL 55, FL 75, FL 95).
+- **Route Magnétique de 180° à 359° (Vers l'Ouest)** : Niveau de vol **PAIR + 500 ft** (ex: FL 45, FL 65, FL 85).
+*(En IFR, les niveaux sont entiers : FL 50, FL 60, etc. Le décalage de +500 ft assure une séparation verticale de sécurité constante entre vols IFR et VFR).*
+:::
+
+### 4. Procédure en Cas de Panne Radio en VFR (Code 7600)
+Si la liaison radioélectrique est perdue en cours de vol :
+1. Afficher immédiatement le code **7600** au transpondeur.
+2. Vérifier les connexions casque, potentiomètres de volume, sélecteur de boîte de mélange et fréquence active.
+3. Émettre à l'aveugle ses intentions en répétant deux fois : *"Transmettant à l'aveugle par suite de panne récepteur..."*.
+4. **Rester en conditions VMC** et poursuivre le vol vers l'aérodrome approprié le plus proche.
+5. Scruter les signaux lumineux émis par la tour de contrôle de l'aérodrome d'atterrissage :
+
+| Signal lumineux | Aéronef en vol | Aéronef au sol |
+| :--- | :--- | :--- |
+| **Vert continu** | Autorisé à atterrir | Autorisé à décoller |
+| **Rouge continu** | Cédez le passage, continuez le circuit | Arrêtez-vous immédiatement |
+| **Vert intermittent** | Revenez pour atterrir | Autorisé à circuler (taxi) |
+| **Rouge intermittent** | Aérodrome dangereux, n'atterrissez pas | Dégagez la piste en service |
+| **Blanc intermittent** | Atterrissez ici et gagnez l'aire de trafic | Retournez à votre point de départ |
+| **Fusée pyrotechnique rouge** | N'atterrissez pas pour le moment (danger) | - |`,
       keyTakeaways: [
-        "Hauteur min VFR normale : 500 ft/sol ; Villes : 1000 ft au-dessus du plus haut obstacle (rayon 600m).",
-        "Face à face : les deux tournent à DROITE.",
-        "Dépassement : toujours par la DROITE.",
-        "Codes Transpondeur : 7700 Détresse, 7600 Panne radio, 7500 Détournement, 7000 VFR."
+        "ATC délivre des ordres et des clairances ; l'AFIS ne donne que des informations ; en auto-information le pilote s'annonce.",
+        "Codes Transpondeur : 7000 (VFR standard), 7700 (Détresse), 7600 (Panne radio), 7500 (Piraterie).",
+        "Règle semi-circulaire VFR : Rm 000° à 179° = Impair + 500 ft ; Rm 180° à 359° = Pair + 500 ft.",
+        "Signaux lumineux TWR : Vert continu = autorisé à atterrir / décoller ; Rouge continu = cédez le passage / stop."
+      ]
+    },
+    {
+      id: '010-ch4',
+      moduleId: '010',
+      title: 'Priorités, Documents de Bord et Responsabilités du Commandant de Bord',
+      readTime: '8 min',
+      content: `### 1. Hauteurs Minimales de Survol (SERA.5005)
+Sauf pour les nécessités du décollage ou de l'atterrissage, le vol VFR ne doit pas être effectué :
+- **Règle générale en campagne** : À une hauteur inférieure à **500 ft (150 m) au-dessus du sol ou de l'eau**, et à une distance minimale de 150 m de toute personne, véhicule, navire ou obstacle isolé.
+- **Au-dessus des villes, agglomérations ou rassemblements de plein air** : À une hauteur minimale de **1 000 ft (300 m) au-dessus de l'obstacle le plus élevé** situé dans un rayon de **600 m** autour de l'aéronef, et permettant toujours en cas de panne de moteur un atterrissage d'urgence sans risque pour les personnes et biens au sol.
+- **Parcs nationaux et réserves naturelles** : Hauteur minimale de survol généralement fixée à **1 000 m (3 300 ft)** au-dessus du sol.
+
+### 2. Règles de Priorité de Passage en Vol (SERA.3210)
+Lorsqu'il existe un risque d'abordage entre deux aéronefs :
+- **Convergence de trajectoires** : L'aéronef qui a l'autre à sa **DROITE** doit lui céder le passage (priorité à droite).
+- **Règle de catégorie d'aéronef** (le moins manœuvrable a la priorité) :
+  1. **Ballons libres** (priorité absolue sur tous les autres engins).
+  2. **Planeurs**.
+  3. **Dirigeables**.
+  4. **Avions remorqueurs** tirant un planeur ou une banderole.
+  5. **Avions et hélicoptères motopropulsés standard**.
+- **Face à face** : Lorsque deux aéronefs se rapprochent de face ou presque, chacun doit obliquer vers sa **DROITE**.
+- **Dépassement** : Un aéronef qui en dépasse un autre par l'arrière doit le dépasser par sa **DROITE**, et l'aéronef dépassé conserve sa priorité de trajectoire.
+- **Atterrissage** : L'aéronef le plus bas sur le plan d'approche finale a la priorité. Toutefois, un aéronef conscient qu'un autre se trouve en situation d'urgence doit s'effacer : un appareil en situation de détresse a **priorité absolue sur TOUS les aéronefs** sans exception !
+
+### 3. Documents Obligatoires à Bord de l'Aéronef (Part-NCO.GEN.135)
+Avant d'entreprendre un vol, le commandant de bord doit s'assurer de la présence physique ou électronique valide à bord :
+- **Documents de l'aéronef** :
+  1. Le **Certificat d'Immatriculation** (CI).
+  2. Le **Certificat de Navigabilité** (CDN) accompagné de son **Certificat d'Examen de Navigabilité (ARC / CEN)** en état de validité.
+  3. La **Licence de Station d'Aéronef (LSA)** pour les équipements radioélectriques.
+  4. Le **Certificat de Limitation de Nuisances (CLN)** ou acoustique.
+  5. Le **Manuel de Vol approuvé de l'avion (POH / AFM)** avec ses limites de masse et centrage.
+  6. La **Fiche de Pesée** en cours de validité.
+  7. L'attestation d'**Assurance Responsabilité Civile** conforme au règlement CE 785/2004.
+  8. Le **Carnet de Route** de l'aéronef, complété après chaque vol.
+- **Documents personnels du pilote** :
+  1. Sa licence de vol valide avec la qualification de classe (SEP) en cours.
+  2. Son certificat médical de Classe 2 (ou 1) en cours de validité.
+  3. Une pièce d'identité officielle avec photographie.
+  4. Les cartes aéronautiques de navigation à jour couvrant la route prévue et les dégagements.
+
+:::definition Responsabilité Souveraine du Commandant de Bord (Part-NCO.GEN.105)
+Le commandant de bord est responsable de la sécurité de tous les membres d'équipage, passagers et du chargement dès le moment où il monte à bord avec l'intention de voler jusqu'au moment où il quitte l'aéronef après le vol.
+Il a l'autorité suprême pour refuser l'embarquement d'une personne ou dérouter le vol en cas de risque pour la sécurité.
+:::`,
+      keyTakeaways: [
+        "Hauteur min : 500 ft sol en campagne ; 1 000 ft au-dessus de l'obstacle le plus haut (rayon 600 m) au-dessus des villes.",
+        "Face à face : les deux aéronefs virent vers la DROITE.",
+        "Convergence : priorité à DROITE. Dépassement : toujours par la DROITE.",
+        "Hiérarchie : Ballon libre > Planeur > Dirigeable > Avion remorqueur > Avion motopropulsé standard.",
+        "Priorité absolue en toutes circonstances à l'aéronef en détresse.",
+        "Le commandant de bord a l'autorité souveraine pour la sécurité du vol."
       ]
     }
   ],
@@ -117,7 +286,7 @@ Permet d'évoluer en CTR quand les conditions météo sont inférieures aux mini
       keyPoints: [
         'Classe A : IFR uniquement (VFR STRICTEMENT INTERDIT)',
         'Classes B, C, D : Espace contrôlé, clairance et radio OBLIGATOIRES pour VFR',
-        'Classe E : Contrôlé pour IFR, VFR libre sans clairance (sauf nuit ou TMZ)',
+        'Classe E : Contrôlé pour IFR, VFR libre sans clairance de jour',
         'Classe G : Espace non contrôlé, auto-information, VFR libre'
       ],
       mnemonics: ['"A = Absolument interdit au VFR"', '"D = Demande de clairance obligatoire"'],
@@ -187,42 +356,33 @@ Permet d'évoluer en CTR quand les conditions météo sont inférieures aux mini
         'Au moins 10 heures de vol comme commandant de bord',
         'Au moins 3 décollages et 3 atterrissages sur le même type ou classe d’aéronef',
         'Au moins 5 heures de navigation solo avec instructeur',
-        'Un vol de contrôle de compétences avec un examinateur FE'
+        'Au moins 1 vol de contrôle de compétences avec un examinateur FE'
       ],
       correctAnswer: 1,
-      explanation: 'Conformément au Part-FCL.060 (expérience récente), un pilote ne peut transporter de passagers que s’il a effectué au moins 3 décollages et 3 atterrissages sur un aéronef du même type ou de la même classe dans les 90 jours précédents.',
+      explanation: 'La réglementation Part-FCL impose 3 atterrissages et 3 décollages dans les 90 jours précédents sur la même classe ou type pour pouvoir emporter des passagers de jour.',
       difficulty: 'moyen'
     },
     {
       id: '010-q4',
       moduleId: '010',
-      question: 'Deux avions motorisés se croisent face à face à la même altitude. Quelle manœuvre doivent-ils effectuer pour éviter la collision ?',
-      options: [
-        'Chacun doit monter de 500 ft',
-        'Chacun doit obliquer vers sa gauche',
-        'Chacun doit obliquer vers sa droite',
-        'L’avion le plus rapide doit obliquer vers la droite, l’autre maintient son cap'
-      ],
-      correctAnswer: 2,
-      explanation: 'Lorsque deux aéronefs se rapprochent de face ou presque de face et qu’il y a risque de collision, chacun doit modifier sa trajectoire vers sa droite.',
+      question: 'Quelle est la durée de validité du certificat médical de Classe 2 pour un pilote âgé de 45 ans ?',
+      options: ['12 mois (1 an)', '24 mois (2 ans)', '36 mois (3 ans)', '60 mois (5 ans)'],
+      correctAnswer: 1,
+      explanation: 'Pour un titulaire de certificat médical Classe 2, la validité est de 60 mois jusqu’à 40 ans, 24 mois entre 40 et 50 ans, et 12 mois au-delà de 50 ans.',
       difficulty: 'facile'
     },
     {
       id: '010-q5',
       moduleId: '010',
-      question: 'Quelle est la durée de validité du certificat médical de Classe 2 pour un pilote âgé de 45 ans ?',
-      options: ['60 mois (5 ans)', '24 mois (2 ans)', '12 mois (1 an)', '36 mois (3 ans)'],
+      question: 'En vol VFR, lorsque deux aéronefs de même catégorie se rapprochent de face, quelle manœuvre doivent-ils exécuter ?',
+      options: [
+        'L’aéronef le plus rapide oblique à droite, l’autre maintient son cap',
+        'Chaque aéronef oblique vers sa droite',
+        'Chaque aéronef oblique vers sa gauche',
+        'L’aéronef le plus bas descend, le plus haut monte'
+      ],
       correctAnswer: 1,
-      explanation: 'Pour un titulaire de licence PPL avec certificat médical Classe 2, la validité est de 60 mois jusqu’à 40 ans, puis passe à 24 mois entre 40 et 50 ans, et enfin à 12 mois au-delà de 50 ans.',
-      difficulty: 'moyen'
-    },
-    {
-      id: '010-q6',
-      moduleId: '010',
-      question: 'Sauf autorisation spéciale, quelle est la hauteur minimale de survol au-dessus de la campagne (hors agglomération et rassemblement de personnes) ?',
-      options: ['150 m (500 ft) sol ou eau', '300 m (1 000 ft) sol', '50 m (150 ft) sol', '600 m (2 000 ft) sol'],
-      correctAnswer: 0,
-      explanation: 'En VFR, la hauteur minimale normale de sécurité est de 150 m (500 ft) au-dessus du sol ou de l’eau, et à une distance d’au moins 150 m de toute personne, véhicule ou structure.',
+      explanation: 'Règle SERA 3210 : En rapprochement de face (face-à-face), chacun des deux aéronefs doit obliquer vers sa DROITE pour s’éloigner.',
       difficulty: 'facile'
     }
   ]

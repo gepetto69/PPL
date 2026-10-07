@@ -26,6 +26,13 @@ export interface TheoryChapter {
   readTime: string;
   content: string; // Markdown or rich structured text
   keyTakeaways: string[];
+  subsections?: {
+    id: string;
+    title: string;
+    content: string;
+    badge?: string;
+    examTip?: string;
+  }[];
   diagramType?: 'metar' | 'altimeter' | 'atmosphere' | 'aerodynamics' | 'circuits' | 'airspaces' | 'weight_balance' | 'turn_coordinator' | 'vor';
 }
 

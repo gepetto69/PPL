@@ -6,6 +6,9 @@ import {
   Activity,
   CircleDot,
   Radio,
+  CloudSun,
+  Scale,
+  Thermometer,
 } from 'lucide-react';
 
 interface DiagramProps {
@@ -231,6 +234,130 @@ export const AviationDiagram: React.FC<DiagramProps> = ({ type }) => {
               <p className="text-slate-300 mt-0.5 text-[11px] leading-tight">Dépend de la position, jamais du cap de l'avion !</p>
             </div>
           </div>
+        </div>
+      );
+
+    case 'metar':
+      return (
+        <div className="bg-slate-900 border border-slate-700/80 rounded-2xl p-3.5 sm:p-5 my-4 sm:my-6 shadow-xl">
+          <div className="flex items-center gap-2 mb-2 sm:mb-3 text-sky-400 font-semibold text-xs sm:text-sm">
+            <CloudSun className="w-4 h-4 shrink-0" />
+            <span className="leading-tight">Anatomie d'un Message METAR Aéronautique</span>
+          </div>
+          <div className="bg-slate-950 p-3 sm:p-4 rounded-xl border border-slate-800 mb-3 font-mono text-xs sm:text-sm text-sky-200 overflow-x-auto whitespace-nowrap">
+            <span className="text-amber-400 font-bold">LFPO</span>{' '}
+            <span className="text-slate-400">121400Z</span>{' '}
+            <span className="text-emerald-400 font-bold">24015G25KT</span>{' '}
+            <span className="text-cyan-300 font-bold">9999</span>{' '}
+            <span className="text-indigo-300">-RA</span>{' '}
+            <span className="text-amber-300 font-bold">BKN018</span>{' '}
+            <span className="text-rose-300">14/09</span>{' '}
+            <span className="text-purple-400 font-bold">Q1018</span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px]">
+            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800">
+              <span className="text-amber-400 font-semibold block">LFPO 121400Z</span>
+              <span className="text-slate-400">Paris-Orly le 12 à 14h00 UTC</span>
+            </div>
+            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800">
+              <span className="text-emerald-400 font-semibold block">24015G25KT</span>
+              <span className="text-slate-400">Vent du 240° / 15 kt, rafales 25 kt</span>
+            </div>
+            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800">
+              <span className="text-amber-300 font-semibold block">BKN018 (Plafond)</span>
+              <span className="text-slate-400">5 à 7 octas à 1 800 ft / sol</span>
+            </div>
+            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800">
+              <span className="text-purple-400 font-semibold block">Q1018</span>
+              <span className="text-slate-400">QNH 1018 hPa (calage altimètre)</span>
+            </div>
+          </div>
+        </div>
+      );
+
+    case 'weight_balance':
+      return (
+        <div className="bg-slate-900 border border-slate-700/80 rounded-2xl p-3.5 sm:p-5 my-4 sm:my-6 shadow-xl">
+          <div className="flex items-center gap-2 mb-2 sm:mb-3 text-amber-400 font-semibold text-xs sm:text-sm">
+            <Scale className="w-4 h-4 shrink-0" />
+            <span className="leading-tight">Principe du Masse et Centrage (Moment = Masse × Bras de Levier)</span>
+          </div>
+          <div className="relative h-44 sm:h-52 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center p-3">
+            <svg className="w-full h-full" viewBox="0 0 500 180">
+              {/* Reference datum line */}
+              <line x1="60" y1="20" x2="60" y2="150" stroke="#f59e0b" strokeWidth="2" strokeDasharray="4 3" />
+              <text x="35" y="15" fill="#f59e0b" fontSize="10" fontWeight="bold">RÉFÉRENCE (DATUM)</text>
+
+              {/* Aircraft fuselage outline simplified */}
+              <path d="M 60 70 C 120 40, 360 40, 440 60 L 450 40 L 455 70 L 410 80 C 330 85, 120 85, 60 70 Z" fill="#334155" stroke="#64748b" strokeWidth="2" />
+
+              {/* Beam line */}
+              <line x1="60" y1="110" x2="450" y2="110" stroke="#94a3b8" strokeWidth="3" />
+
+              {/* Forward limit */}
+              <line x1="180" y1="95" x2="180" y2="125" stroke="#38bdf8" strokeWidth="2" />
+              <text x="145" y="140" fill="#38bdf8" fontSize="10">Limite Avant</text>
+
+              {/* Aft limit */}
+              <line x1="260" y1="95" x2="260" y2="125" stroke="#f43f5e" strokeWidth="2" />
+              <text x="240" y="140" fill="#f43f5e" fontSize="10">Limite Arrière</text>
+
+              {/* CG Safe Zone */}
+              <rect x="180" y="103" width="80" height="14" fill="#10b981" fillOpacity="0.35" rx="3" />
+              <text x="185" y="98" fill="#34d399" fontSize="10" fontWeight="bold">ZONE AUTORISÉE</text>
+
+              {/* Fulcrum (CG) */}
+              <polygon points="215,112 205,130 225,130" fill="#34d399" />
+              <text x="207" y="145" fill="#34d399" fontSize="11" fontWeight="bold">CG</text>
+
+              {/* Lever arm arrow */}
+              <line x1="60" y1="45" x2="215" y2="45" stroke="#e2e8f0" strokeWidth="1.5" markerEnd="url(#arrow)" />
+              <text x="110" y="38" fill="#e2e8f0" fontSize="10">Bras de levier</text>
+            </svg>
+          </div>
+          <div className="grid grid-cols-2 gap-2 mt-2 text-[11px]">
+            <div className="bg-sky-950/40 border border-sky-800/40 p-2 rounded-lg">
+              <span className="text-sky-300 font-semibold block">Centrage Trop Avant</span>
+              <p className="text-slate-300 text-[10px]">Stabilité forte, mais décollage difficile et manque d'autorité à cabrer à l'atterrissage.</p>
+            </div>
+            <div className="bg-rose-950/40 border border-rose-800/40 p-2 rounded-lg">
+              <span className="text-rose-300 font-semibold block">Centrage Trop Arrière (DANGER)</span>
+              <p className="text-slate-300 text-[10px]">Instable, commandes hypersensibles, risque d'entrée en vrille à plat irrécupérable !</p>
+            </div>
+          </div>
+        </div>
+      );
+
+    case 'atmosphere':
+      return (
+        <div className="bg-slate-900 border border-slate-700/80 rounded-2xl p-3.5 sm:p-5 my-4 sm:my-6 shadow-xl">
+          <div className="flex items-center gap-2 mb-2 sm:mb-3 text-cyan-400 font-semibold text-xs sm:text-sm">
+            <Thermometer className="w-4 h-4 shrink-0" />
+            <span className="leading-tight">Profil de l'Atmosphère Type OACI (ISA)</span>
+          </div>
+          <div className="grid grid-cols-3 gap-2 text-center text-xs">
+            <div className="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+              <span className="text-slate-400 block text-[10px] font-mono">NIVEAU DE LA MER</span>
+              <div className="text-base font-bold text-sky-400 my-0.5">0 ft / 0 m</div>
+              <div className="text-[11px] text-emerald-400 font-mono">+15 °C</div>
+              <div className="text-[10px] text-slate-300 font-mono">1 013,25 hPa</div>
+            </div>
+            <div className="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+              <span className="text-slate-400 block text-[10px] font-mono">FL 100 (SEUIL VMC)</span>
+              <div className="text-base font-bold text-sky-400 my-0.5">10 000 ft</div>
+              <div className="text-[11px] text-cyan-400 font-mono">-5 °C</div>
+              <div className="text-[10px] text-slate-300 font-mono">~700 hPa</div>
+            </div>
+            <div className="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+              <span className="text-slate-400 block text-[10px] font-mono">TROPOPAUSE</span>
+              <div className="text-base font-bold text-sky-400 my-0.5">36 090 ft</div>
+              <div className="text-[11px] text-purple-400 font-mono">-56,5 °C</div>
+              <div className="text-[10px] text-slate-300 font-mono">226 hPa</div>
+            </div>
+          </div>
+          <p className="text-[11px] text-slate-400 mt-2 text-center">
+            Gradient thermique : <strong>-2 °C par 1 000 ft</strong> (-0,65 °C / 100 m). Gradient barométrique : <strong>1 hPa pour 27 ft</strong> au niveau de la mer.
+          </p>
         </div>
       );
 

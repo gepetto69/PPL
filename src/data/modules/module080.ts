@@ -7,7 +7,7 @@ export const module080: PPLModule = {
   shortName: 'Aérodynamique',
   iconName: 'Wind',
   color: 'teal',
-  description: 'Écoulement de l’air (Bernoulli, Venturi), portance (Cz), traînées (induite, parasite), décrochage et facteur de charge (virage incliné), polaire d’Eiffel, stabilité.',
+  description: 'Écoulement de l’air subsonique (Bernoulli, Venturi), forces aérodynamiques (portance Cz, traînée Cx), traînée induite et parasite, polaire d’Eiffel, décrochage et facteur de charge en virage, stabilité et commandes de vol.',
   examQuestionsCount: 16,
   examDurationMinutes: 35,
   chapters: [
@@ -15,72 +15,142 @@ export const module080: PPLModule = {
       id: '080-ch1',
       moduleId: '080',
       title: 'Création de la Portance et Résultante Aérodynamique',
-      readTime: '8 min',
+      readTime: '9 min',
       diagramType: 'aerodynamics',
       content: `### 1. Théorème de Bernoulli et Profil d'Aile
-L'aile d'un avion possède un profil asymétrique :
-- **Extrados** (face supérieure) : Courbure plus prononcée. Les filets d'air doivent accélérer -> augmentation de la vitesse d'écoulement -> **diminution de la pression statique (dépression)** selon le théorème de Bernoulli :
-  \\[ P + \\frac{1}{2} \\rho V^2 = \\text{Constante} \\]
-- **Intrados** (face inférieure) : Écoulement ralenti -> **surpression**.
-- La dépression sur l'extrados fournit environ **70 à 80% de la portance totale** de l'aile ! L'aile est littéralement aspirée vers le haut.
+L'aile d'un avion possède un profil aérodynamique asymétrique caractérisé par :
+- Le **bord d'attaque** (avant) et le **bord de fuite** (arrière effilé).
+- La **corde de profil** : segment reliant le bord d'attaque au bord de fuite.
+- La **ligne moyenne de cambrure** et la courbure de l'aile.
+- L'**extrados** (surface supérieure) plus galbé, et l'**intrados** (surface inférieure) plus plat.
 
-### 2. Les Formules Clés de l'Aérodynamique
-- **Portance (Rz ou L)** :
+Lorsque l'aile fend l'air avec une vitesse relative \(V\) :
+- **Sur l'extrados** : Les lignes de courant se resserrent au-dessus de la courbure. L'air doit accélérer pour contourner le profil.
+  - Selon le **théorème de Bernoulli** pour un fluide incompressible :
+    \\[ P_{\\text{statique}} + \\frac{1}{2} \\rho V^2 = \\text{Pression Totale} = \\text{Constante} \\]
+  - L'augmentation de la vitesse d'écoulement (\(V\)) entraîne une **chute brutale de la pression statique : c'est la DÉPRESSION sur l'extrados**.
+- **Sur l'intrados** : Les filets d'air sont ralentis, créant une légère **surpression**.
+- **Répartition** : La dépression sur l'extrados génère **environ 70 à 80% de la portance totale** de l'aile ! L'avion est littéralement aspiré vers le haut, et non pas seulement poussé par dessous.
+
+:::definition L'Angle d'Incidence (Angle of Attack - Alpha)
+L'angle d'incidence est l'angle géométrique formé entre la **corde de profil de l'aile** et la **direction de l'écoulement de l'air non perturbé (le Vent Relatif)**.
+⚠️ Ne jamais confondre l'incidence avec l'assiette de l'avion (qui est l'angle entre l'axe longitudinal de l'avion et l'horizon terrestre).
+:::
+
+### 2. Les Équations Clés de la Portance et de la Traînée
+- **La Portance (Rz ou Lift - L)** : Force aérodynamique perpendiculaire au vent relatif :
   \\[ R_z = \\frac{1}{2} \\rho S V^2 C_z \\]
-  Où :
-  - \\(\\rho\\) = masse volumique de l'air (kg/m³).
-  - \\(S\\) = surface alaire (m²).
-  - \\(V\\) = vitesse de l'air par rapport à l'aile (m/s).
-  - \\(C_z\\) = coefficient de portance (dépend du profil et de l'**angle d'incidence**).
-- **Traînée (Rx ou D)** :
+  - \(\\rho\) = masse volumique de l'air ambiant (kg/m³).
+  - \(S\) = surface alaire totale de l'aile (m²).
+  - \(V\) = vitesse propre par rapport à l'air (m/s).
+  - \(C_z\) = coefficient de portance (sans dimension, déterminé par le profil et l'incidence).
+- **La Traînée (Rx ou Drag - D)** : Force aérodynamique parallèle et de même sens que le vent relatif (résistance à l'avancement) :
   \\[ R_x = \\frac{1}{2} \\rho S V^2 C_x \\]
-  La traînée totale est la somme de :
-  1. **La traînée parasite** : frottement et forme de la cellule, antennes, train fixe. **Augmente comme le carré de la vitesse** (\\(V^2\\)).
-  2. **La traînée induite** : conséquence directe de la création de portance et des tourbillons marginaux en bout d'aile. **Diminue quand la vitesse augmente** (proportionnelle à \\(1/V^2\\)).
-  - La vitesse de traînée minimale correspond à la vitesse de **finesse maximale**.
+  - \(C_x\) = coefficient de traînée.
+- **La Résultante Aérodynamique (Ra)** : Somme vectorielle de la portance et de la traînée (\(Ra = \sqrt{R_z^2 + R_x^2}\)), appliquée au **Centre de Poussée** de l'aile.
 
-### 3. La Finesse (f)
-Rapport entre la distance horizontale parcourue et la hauteur perdue en plané sans moteur :
-\\[ f = \\frac{R_z}{R_x} = \\frac{C_z}{C_x} = \\frac{\\text{Distance parcourue}}{\\text{Hauteur perdue}} \\]
-Un avion ayant une finesse de 10 parcourt 10 km pour 1 000 mètres d'altitude perdue.`,
+### 3. La Finesse Aérodynamique (f)
+La finesse mesure le rendement aérodynamique global de l'aéronef :
+\\[ f = \\frac{R_z}{R_x} = \\frac{C_z}{C_x} = \\frac{\\text{Distance horizontale franchie en plané}}{\\text{Perte de hauteur verticale}} \\]
+- Un avion d'école classique (DR400 ou C172) a une finesse maximale d'environ **9 à 10** : en coupant le moteur à 1 000 mètres (environ 3 300 ft) de hauteur en air calme, il peut planer sur une distance de **10 kilomètres** (environ 5,4 NM).
+- Un planeur de compétition peut dépasser une finesse de 50 à 60 !
+- La finesse maximale est obtenue à une incidence unique optimale (\(\\approx 4^\\circ\\) à \(6^\\circ\)), correspondant à la vitesse de finesse max (meilleur plané).`,
       keyTakeaways: [
-        "70 à 80% de la portance provient de la dépression sur l'extrados.",
-        "Portance proportionnelle au carré de la vitesse (V²) et au Cz.",
-        "Traînée parasite augmente avec V² ; traînée induite diminue avec V².",
-        "Finesse max = point de croisement des traînées (meilleur rapport Portance / Traînée)."
+        "70% à 80% de la portance provient de la dépression d'extrados (Bernoulli).",
+        "Incidence = angle entre corde de profil et vent relatif.",
+        "Portance : Rz = 1/2 * rho * S * V² * Cz. Proportionnelle au carré de la vitesse (V²).",
+        "Finesse f = Rz / Rx = Distance franchie / Hauteur perdue."
       ]
     },
     {
       id: '080-ch2',
       moduleId: '080',
-      title: 'Le Décrochage et Facteur de Charge en Virage',
-      readTime: '8 min',
+      title: 'Les Deux Traînées et la Polaire d’Eiffel',
+      readTime: '9 min',
+      content: `### 1. La Traînée Parasite vs La Traînée Induite
+La traînée totale opposée à la trajectoire de l'avion résulte de l'addition de deux composantes aux comportements strictement opposés :
+
+#### A. La Traînée Parasite (\(R_{xp}\)) :
+Composée de la traînée de forme de la cellule, du frottement de l'air sur le revêtement et de l'interférence entre les éléments (fuselage, train fixe, haubans, antennes).
+- Elle ne dépend pas de la portance.
+- **Elle augmente avec le carré de la vitesse (\(V^2\))** : plus l'avion va vite, plus la traînée parasite devient gigantesque !
+
+#### B. La Traînée Induite (\(R_{xi}\)) :
+C'est la rançon physique inévitable de la portance !
+- En vol, l'intrados est en surpression et l'extrados en dépression.
+- Aux extrémités des ailes (saumons), l'air contourne le bout d'aile du bas vers le haut, créant de gigantesques **tourbillons marginaux (vortex)**.
+- Ces tourbillons dévient le flux d'air vers le bas (déflexion descendante - downwash), ce qui incline la résultante aérodynamique vers l'arrière : cette composante arrière est la traînée induite.
+- **Elle diminue quand la vitesse augmente** (proportionnelle à \(1/V^2\)) et dépend de l'**allongement de l'aile** (\(\lambda = b^2/S\)).
+  - Une aile longue et étroite (grand allongement comme un planeur) produit très peu de traînée induite.
+  - Les ailettes de bout d'aile (Winglets) brisent ces tourbillons pour réduire la traînée induite.
+
+:::formule Traînée Totale et Vitesse de Finesse Maximale
+\\[ R_x(\\text{totale}) = R_{xp} (\\propto V^2) + R_{xi} \\left(\\propto \\frac{1}{V^2}\\right) \\]
+- La courbe de traînée totale présente un minimum parfait là où **Traînée Parasite = Traînée Induite**.
+- Cette vitesse minimale correspond exactement à la **Vitesse de Finesse Maximale** !
+- *Au-dessus de cette vitesse (Premier Régime)* : La traînée augmente si l'on accélère (dominée par le parasite).
+- *Au-dessous de cette vitesse (Second Régime)* : Plus l'on ralentit, **PLUS LA TRAÎNÉE INDUITE AUGMENTE** ! C'est le domaine du second régime (vol aux grands angles), où voler plus lentement exige de remettre du moteur !
+:::
+
+### 2. La Polaire d'Eiffel
+La polaire aérodynamique d'une aile est la courbe représentant le coefficient de portance (\(C_z\)) en fonction du coefficient de traînée (\(C_x\)) pour chaque angle d'incidence :
+- Le point le plus à gauche : traînée minimale (\(C_{x\_min}\)).
+- La tangente à la courbe passant par l'origine : point de **Finesse Maximale** (rapport \(C_z / C_x\) maximal).
+- Le sommet de la courbe : **Portance Maximale (\(C_{z\_max}\))**, juste avant le décrochage.
+- Au-delà du sommet : la portance s'effondre et la traînée explose : c'est le **décrochage**.`,
+      keyTakeaways: [
+        "Traînée parasite augmente avec V² ; traînée induite diminue avec V².",
+        "Traînée induite générée par les tourbillons marginaux aux saumons d'ailes.",
+        "Finesse max atteinte quand Traînée parasite = Traînée induite.",
+        "Second régime (basses vitesses) : plus l'avion ralentit, plus la traînée induite est forte."
+      ]
+    },
+    {
+      id: '080-ch3',
+      moduleId: '080',
+      title: 'Le Décrochage et Facteur de Charge en Virage Incliné',
+      readTime: '10 min',
       diagramType: 'turn_coordinator',
-      content: `### 1. Le Phénomène du Décrochage (Stall)
-- **Définition** : Le décrochage se produit lorsque l'**angle d'incidence (angle entre la corde de profil et le vent relatif)** dépasse l'incidence critique (généralement entre 15° et 18° selon le profil).
-- **Attention piège d'examen** : Un avion peut décrocher à **N'IMPORTE QUELLE VITESSE**, à n'importe quelle assiette et à n'importe quelle puissance, dès lors que l'**incidence critique est dépassée** !
-- Au-delà de l'incidence critique, les filets d'air se décollent de l'extrados, la portance s'effondre brutalement et la traînée explose.
-- **Récupération** : Rendre la main (pousser sur le manche) pour réduire immédiatement l'angle d'incidence, puis remettre la puissance avec symétrie (bille au centre au palonnier).
+      content: `### 1. Le Phénomène Physique du Décrochage (Stall)
+- **Définition stricte** : Le décrochage se produit lorsque l'**angle d'incidence (Alpha)** dépasse l'incidence critique certifiée du profil (généralement entre **15° et 18°**).
+- Au-delà de cette incidence limite, l'air ne parvient plus à épouser la courbure de l'extrados : la couche limite se décolle, le flux devient violemment tourbillonnaire, **la portance s'effondre brutalement et la traînée devient gigantesque**.
+- **Signes annonciateurs du décrochage** :
+  - Commandes de vol "molles" et peu efficaces (moins de souffle aérodynamique).
+  - Avertisseur sonore de décrochage (Stall warning) qui retentit 5 à 10 kt avant le décrochage.
+  - Vibrations (Buffeting) de la structure causées par les tourbillons d'extrados qui frappent la gouverne de profondeur.
+- **Récupération immédiate du décrochage** :
+  1. **Rendre la main (pousser sur le manche)** : Réduire l'incidence sous l'incidence critique pour recoller les filets d'air.
+  2. Remettre la **puissance maximale (Plein Gaz)** pour reprendre de la vitesse.
+  3. Maintenir la **symétrie au palonnier (bille au centre)** ! Ne JAMAIS tenter de relever une aile qui s'enfonce avec les ailerons (cela augmenterait l'incidence du côté enfoncé et déclencherait une vrille immédiate !).
+
+:::piege Le Piège N°1 de l'Examen DGAC
+Un avion peut décrocher à **N'IMPORTE QUELLE VITESSE, DANS N'IMPORTE QUELLE ASSIETTE ET AVEC N'IMPORTE QUELLE PUISSANCE MOTEUR** !
+Il suffit que le pilote tire trop fort sur le manche et dépasse l'incidence critique. (Exemple : décrochage dynamique lors d'une ressource brutale à 120 kt).
+:::
 
 ### 2. Le Facteur de Charge (n) et Virage Incliné
-En virage horizontal coordonné stabilisé à inclinaison \\(\\Phi\\) :
+En virage coordonné horizontal en palier à l'inclinaison \(\\Phi\) :
+La portance doit équilibrer à la fois le poids de l'avion ET la force centrifuge.
 \\[ n = \\frac{1}{\\cos \\Phi} \\]
-- À **0°** d'inclinaison : \\(n = 1\\) g.
-- À **60°** d'inclinaison : \\(\\cos 60^\\circ = 0,5\\) -> \\(n = \\frac{1}{0,5} = \\mathbf{2\\ g}\\) ! (Le pilote et l'avion pèsent deux fois leur poids).
+- À **0°** d'inclinaison : \\(n = 1\\) g (poids normal).
+- À **30°** d'inclinaison : \\(\\cos 30^\\circ = 0,866\\) -> \\(n = 1,15\\) g.
+- À **45°** d'inclinaison : \\(\\cos 45^\\circ = 0,707\\) -> \\(n = 1,41\\) g.
+- À **60°** d'inclinaison : \\(\\cos 60^\\circ = 0,5\\) -> \\(n = \\mathbf{2,0\\ g}\\) ! (L'avion et ses occupants pèsent deux fois leur poids réel).
 - À **75°** d'inclinaison : \\(n = 3,86\\) g.
 
-#### Conséquence sur la Vitesse de Décrochage (Vs) :
-La vitesse de décrochage sous facteur de charge \\(n\\) augmente selon la racine carrée de \\(n\\) :
+#### Conséquence Mortelle sur la Vitesse de Décrochage (\(V_s\)) :
+Sous facteur de charge \(n\), la vitesse de décrochage augmente proportionnellement à la **racine carrée de \(n\)** :
 \\[ V_s(n) = V_{s0} \\times \\sqrt{n} \\]
 - Pour un avion dont la vitesse de décrochage à plat est de **50 kt** :
-  - En virage à **60° d'inclinaison** (\\(n = 2\\)) :
-  \\[ V_s = 50 \\times \\sqrt{2} = 50 \\times 1,414 \\approx \\mathbf{71\\ kt} ! \\]
-  Si l'avion vole à 65 kt dans ce virage à 60°, **il décroche violemment en virage** même à plein régime !`,
+  - En virage à **60° d'inclinaison** (\(n = 2\)) :
+    \\[ V_s = 50 \\times \\sqrt{2} = 50 \\times 1,414 = \\mathbf{70,7\\ kt} ! \\]
+- Si le pilote effectue ce virage à 65 kt sans incliner le nez vers le bas, **l'avion décroche brutalement en virage** alors qu'il vole 15 kt au-dessus de sa vitesse de décrochage normale !`,
       keyTakeaways: [
-        "Le décrochage ne dépend QUE de l'incidence (dépassement de l'incidence critique).",
+        "Décrochage = dépassement de l'incidence critique (~16°), indépendant de la vitesse brute.",
+        "Sortie de décrochage : RENDRE LA MAIN (pousser le manche) + plein gaz + contrôler les ailes au palonnier.",
         "Facteur de charge en virage : n = 1 / cos(inclinaison). À 60°, n = 2 g.",
-        "Vitesse de décrochage en virage : Vs(n) = Vs x racine(n). À 60°, Vs augmente de 41% !",
-        "Sortie de décrochage : DIMINUER L'INCIDENCE en poussant sur le manche."
+        "Vitesse de décrochage sous facteur de charge : Vs(n) = Vs * sqrt(n). À 60°, Vs augmente de 41% !",
+        "Ne jamais utiliser les ailerons pour rattraper une aile qui décroche (utiliser le palonnier)."
       ]
     }
   ],

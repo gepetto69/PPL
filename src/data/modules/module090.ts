@@ -7,76 +7,162 @@ export const module090: PPLModule = {
   shortName: 'Communications',
   iconName: 'Radio',
   color: 'emerald',
-  description: 'Phraséologie aéronautique VFR officielle, alphabet phonétique OACI, collationnements obligatoires, messages d’urgence (PAN PAN) et de détresse (MAYDAY), procédures de panne radio (NORDO).',
+  description: 'Phraséologie aéronautique VFR officielle (français et anglais), alphabet phonétique OACI, techniques d’émission radio VHF, collationnements obligatoires, messages d’urgence (PAN PAN) et de détresse (MAYDAY), procédures de panne de communication (NORDO) et signaux lumineux.',
   examQuestionsCount: 12,
   examDurationMinutes: 20,
   chapters: [
     {
       id: '090-ch1',
       moduleId: '090',
-      title: 'L’Alphabet Phonétique OACI et Règles de Transmission',
-      readTime: '6 min',
+      title: 'L’Alphabet Phonétique OACI, Chiffres et Règles de Transmission',
+      readTime: '8 min',
       content: `### 1. L'Alphabet Phonétique International OACI
-Pour éviter toute ambiguïté sur les fréquences radio VHF :
-- **A** : Alfa | **B** : Bravo | **C** : Charlie | **D** : Delta | **E** : Echo
-- **F** : Foxtrot | **G** : Golf | **H** : Hotel | **I** : India | **J** : Juliett
-- **K** : Kilo | **L** : Lima | **M** : Mike | **N** : November | **O** : Oscar
-- **P** : Papa | **Q** : Quebec | **R** : Romeo | **S** : Sierra | **T** : Tango
-- **U** : Uniform | **V** : Victor | **W** : Whiskey | **X** : X-ray | **Y** : Yankee | **Z** : Zulu
+Pour garantir une intelligibilité parfaite sur les ondes VHF et éliminer tout risque de confusion phonétique entre lettres proches (comme B, D, P, T) :
 
-#### Transmission des Nombres :
-- Se prononcent chiffre par chiffre pour les caps, fréquences, transpondeurs.
-  - Ex : Cap 250 -> *"Cap deux cinq zéro"* (ou *"Heading two five zero"*).
-  - Ex : Fréquence 118.275 -> *"Un un huit décimale deux sept cinq"*.
-  - Ex : Altitude 4 500 ft -> *"Quatre mille cinq cents pieds"*.
-  - Ex : Niveau de vol FL 70 -> *"Niveau sept zéro"*.
+| Lettre | Mot code OACI | Prononciation | Lettre | Mot code OACI | Prononciation |
+| :---: | :--- | :--- | :---: | :--- | :--- |
+| **A** | **Alfa** | AL-FAH | **N** | **November** | NO-VEM-BER |
+| **B** | **Bravo** | BRAH-VOH | **O** | **Oscar** | OSS-CAH |
+| **C** | **Charlie** | TCHAR-LEE | **P** | **Papa** | PAH-PAH |
+| **D** | **Delta** | DELL-TAH | **Q** | **Quebec** | KEH-BECK |
+| **E** | **Echo** | ECK-OH | **R** | **Romeo** | ROW-ME-OH |
+| **F** | **Foxtrot** | FOKS-TROT | **S** | **Sierra** | SEE-AIR-RAH |
+| **G** | **Golf** | GOLF | **T** | **Tango** | TANG-GO |
+| **H** | **Hotel** | HOH-TELL | **U** | **Uniform** | YOU-NEE-FORM |
+| **I** | **India** | IN-DEE-AH | **V** | **Victor** | VIK-TAH |
+| **J** | **Juliett** | JEW-LEE-ETT | **W** | **Whiskey** | WISS-KEY |
+| **K** | **Kilo** | KEY-LOH | **X** | **X-ray** | ECKS-RAY |
+| **L** | **Lima** | LEE-MAH | **Y** | **Yankee** | YANG-KEY |
+| **M** | **Mike** | MIKE | **Z** | **Zulu** | ZOO-LOO |
 
-### 2. Les Collationnements Obligatoires (Readback)
-Le pilote doit TOUJOURS répéter intégralement :
-1. **Les clairances de piste** : Atterrissage, décollage, alignement, traversée, attente avant piste.
-2. **La piste en service**.
-3. **Le calage altimétrique (QNH ou QFE)**.
-4. **Le code transpondeur assigné (Squawk)**.
-5. **Les instructions de niveau de vol, altitude, cap et vitesse**.
-6. **Les clairances de franchissement de zone et voies de circulation (Taxiways)**.`,
+### 2. Transmission des Nombres et Éléments Chiffrés
+- **Chiffre par chiffre** : Les éléments d'identification, caps, fréquences radio, codes transpondeur et pistes s'énoncent toujours chiffre par chiffre :
+  - Cap 270 : *"Cap deux sept zéro"* (ou *"Heading two seven zero"*).
+  - Piste 09 : *"Piste zéro neuf"* (ou *"Runway zero nine"*).
+  - Fréquence 118,125 MHz : *"Un un huit décimale un deux cinq"*.
+  - Transpondeur 7000 : *"Transpondeur sept zéro zéro zéro"*.
+  - Vent 240° / 15 kt : *"Vent deux quatre zéro degrés, un cinq nœuds"*.
+- **Altitudes et Niveaux** :
+  - Les altitudes s'expriment en milliers et centaines de pieds :
+    - 4 500 ft : *"Quatre mille cinq cents pieds"* (ou *"Four thousand five hundred feet"*).
+  - Les niveaux de vol s'énoncent séparément :
+    - FL 65 : *"Niveau six cinq"* (ou *"Flight level six five"*).
+
+### 3. Les Termes Conventionnels de Phraséologie
+- **Collationnez (Read back)** : Répétez-moi tout ou partie de ce message exactement comme vous l'avez reçu.
+- **Affirmez (Affirm)** : Oui.
+- **Négatif (Negative)** : Non, ou ce n'est pas correct.
+- **Reçu (Roger)** : J'ai reçu et compris l'intégralité de votre transmission. (⚠️ *Attention : "Reçu" ne signifie JAMAIS une autorisation !*).
+- **Attendez (Standby)** : Patientez, je vous rappelle sous peu.
+- **Corrigez (Correction)** : Une erreur a été commise dans cette émission, la version correcte est...
+- **Vérifiez (Check)** : Examinez un système ou une procédure.`,
       keyTakeaways: [
-        "Alphabet OACI : mémoriser de Alfa à Zulu sans hésitation.",
-        "Collationnement rigoureux et complet de toutes les clairances de sécurité.",
-        "QNH, piste, clairance d'alignement/décollage/atterrissage et transpondeur sont à collationner OBLIGATOIREMENT."
+        "Alphabet OACI : mémoriser de Alfa à Zulu sans la moindre hésitation.",
+        "Caps, pistes, fréquences et transpondeurs sont TOUJOURS transmis chiffre par chiffre.",
+        "Altitudes en milliers/centaines de pieds (ex: 3 500 ft = trois mille cinq cents pieds) ; Niveaux de vol chiffre par chiffre (ex: FL 75 = niveau sept cinq).",
+        "'Reçu' (Roger) confirme la bonne réception technique mais ne constitue EN AUCUN CAS une autorisation !"
       ]
     },
     {
       id: '090-ch2',
       moduleId: '090',
-      title: 'Détresse (MAYDAY) vs Urgence (PAN PAN)',
-      readTime: '7 min',
-      content: `### 1. Le Signal de Détresse : MAYDAY
-- **Définition** : Menace d'un danger grave et/ou imminent, et nécessitant un secours immédiat (ex : incendie à bord, panne moteur sans espoir de rallier une piste, perte de contrôle structurelle).
-- **Appel** : Répéter 3 fois le mot **MAYDAY** :
-  \\[ \\text{MAYDAY, MAYDAY, MAYDAY} \\]
-- Ordre du message de détresse :
-  1. Nom de la station appelée (ex : *Paris Information*).
-  2. Indicatif de l'aéronef (ex : *F-GABC*).
-  3. Nature de la détresse (ex : *Incendie cabine*).
-  4. Intentions du commandant de bord (ex : *Atterrissage forcé immédiat*).
-  5. Position actuelle, altitude et cap (ex : *10 NM au nord de Chartres, 2 500 ft, cap sud*).
-  6. Nombre de personnes à bord (POB - Persons On Board) et carburant restant.
+      title: 'Collationnements Obligatoires, Intégrations et Pannes Radio (NORDO)',
+      readTime: '9 min',
+      content: `### 1. Les Collationnements Strictement Obligatoires (Readback)
+Le collationnement est la répétition intégrale et immédiate par le pilote d'une clairance ou instruction émise par le contrôle. Il permet au contrôleur de vérifier que son ordre a été fidèlement compris.
 
-### 2. Le Signal d'Urgence : PAN PAN
-- **Définition** : Condition concernant la sécurité d'un aéronef ou d'une personne à bord, mais n'exigeant pas de secours immédiat (ex : passager victime d'un malaise, égarement sans panne de carburant immédiate, baisse anormale de pression d'huile sans arrêt moteur).
-- **Appel** : Répéter 3 fois l'expression **PAN PAN** :
-  \\[ \\text{PAN PAN, PAN PAN, PAN PAN} \\]
+:::piege La Liste des Messages à Collationner Impérativement
+Le pilote DOIT TOUJOURS collationner :
+1. **Toutes les clairances de piste** : Atterrissage, décollage, alignement, traversée, attente avant piste (*"Autorisé atterrissage piste 27, F-CD"*).
+2. **La désignation de la piste en service**.
+3. **Le calage altimétrique (QNH ou QFE)**.
+4. **Le code transpondeur assigné (Squawk)**.
+5. **Les instructions de niveau de vol, altitude, cap et vitesse**.
+6. **Les clairances de franchissement de zone et voies de circulation (Taxiways)**.
+7. **La fréquence radio de transfert assignée**.
+*En revanche, une simple information météo ou une information de trafic ne nécessite pas de collationnement (un simple "Reçu, F-CD" suffit).*
+:::
 
-### 3. Panne de Réception / Émission (NORDO)
-- En cas de panne radio avérée en vol VFR :
-  - Afficher le transpondeur **7600**.
-  - Si l'émetteur fonctionne mais le récepteur est en panne : transmettre les messages à l'aveugle précédés de l'expression : *"TRANSMISSION À L'AVEUGLE PAR SUITE DE PANNE DE RÉCEPTEUR"*, répétés deux fois.
-  - Rejoindre un terrain hors espace contrôlé ou respecter les consignes publiées VAC.`,
+### 2. Procédures d'Arrivée et de Tour de Piste en Phraséologie
+- **Premier contact avec la Tour (TWR)** :
+  *"Pontoise Tour, de F-GABC, bonjour. C172, en provenance de Rouen, à 2 minutes du point Sierra, 1 500 ft QNH 1018, avec l'information Bravo, pour un atterrissage complet."*
+- **Réponse du contrôleur** :
+  *"F-BC, bonjour, transpondeur 4521, intégrez début de vent arrière main gauche piste 05, rappelez vent arrière."*
+- **Collationnement du pilote** :
+  *"Transpondeur 4521, j'intègre début de vent arrière main gauche piste 05, je rappelle en vent arrière, F-BC."*
+
+### 3. Panne des Télécommunications Radio (Code 7600)
+Si la liaison radioélectrique est interrompue :
+1. Vérifier la connectique casque, l'alternat (PTT), le squelch, le volume et la boîte de mélange audio.
+2. Si la panne persiste : afficher immédiatement **7600 au transpondeur**.
+3. **Transmission à l'aveugle** : Si l'émetteur est suspecté de fonctionner encore :
+   - Émettre chaque message deux fois précédé de : *"TRANSMISSION À L'AVEUGLE PAR SUITE DE PANNE DE RÉCEPTEUR"*.
+4. **En VMC** : Poursuivre le vol en restant à vue et atterrir sur l'aérodrome approprié le plus proche.
+5. Observer attentivement les **signaux lumineux de la Tour de contrôle** :
+
+| Signal lumineux émis par la TWR | Aéronef en vol | Aéronef au sol |
+| :--- | :--- | :--- |
+| **Vert continu** | **Autorisé à atterrir** | **Autorisé à décoller** |
+| **Rouge continu** | **Cédez le passage**, continuez le circuit | **Arrêtez-vous** |
+| **Vert intermittent** | Revenez pour atterrir | Autorisé à circuler (taxi) |
+| **Rouge intermittent** | Aérodrome dangereux, n'atterrissez pas | Dégagez immédiatement la piste |
+| **Blanc intermittent** | Atterrissez ici et gagnez le parking | Retournez à votre point de départ |
+| **Fusée pyrotechnique rouge** | N'atterrissez pas pour le moment | - |`,
       keyTakeaways: [
-        "MAYDAY (3x) : Danger grave et imminent, secours immédiat requis (Code 7700).",
-        "PAN PAN (3x) : Sécurité menacée sans détresse immédiate.",
-        "Fréquence de veille d'urgence : 121.500 MHz.",
-        "Transpondeur panne radio : 7600."
+        "Collationnement OBLIGATOIRE : clairances de piste, QNH, code transpondeur, niveau/altitude, cap, piste en service.",
+        "Panne radio : afficher 7600 au transpondeur, émettre à l'aveugle (x2), rester VMC.",
+        "Signaux lumineux TWR : Vert continu = autorisé atterrissage/décollage ; Rouge continu = cédez passage/arrêt.",
+        "Feu pyrotechnique rouge = interdiction formelle d'atterrir."
+      ]
+    },
+    {
+      id: '090-ch3',
+      moduleId: '090',
+      title: 'Messages de Détresse (MAYDAY) et d’Urgence (PAN PAN)',
+      readTime: '8 min',
+      content: `### 1. La Hiérarchie des Priorités des Messages Radio
+Selon l'Annexe 10 de l'OACI et les règles SERA.14095, les communications radio respectent une priorité absolue :
+1. **Appels et messages de DÉTRESSE (MAYDAY)**.
+2. **Messages d'URGENCE (PAN PAN)**.
+3. Communications relatives aux relèvements radiogoniométriques.
+4. Messages relatifs à la sécurité des vols.
+5. Messages météorologiques.
+6. Messages de régularité des vols.
+
+### 2. Le Message de Détresse : MAYDAY
+- **Condition légale** : Menace d'un **danger grave et/ou imminent, exigeant une assistance immédiate** (ex: panne moteur totale en campagne, incendie non maîtrisé, perte d'une gouverne de vol).
+- **Signal phonétique** : Répéter trois fois le mot **MAYDAY** (de l'expression française *"Venez m'aider"*).
+- **Structure réglementaire du message de détresse** :
+  1. \`MAYDAY, MAYDAY, MAYDAY\`
+  2. Nom de la station appelée (ou *"À toutes les stations"*).
+  3. Indicatif d'appel complet de l'avion (\`F-GABC\`).
+  4. Nature de la détresse (\`Panne moteur totale\`).
+  5. Intentions du commandant de bord (\`Atterrissage forcé en campagne\`).
+  6. Position géographique, altitude et cap (\`10 NM Sud-Est de Rouen, 2 500 ft\`).
+  7. Renseignements complémentaires utiles : nombre de personnes à bord (\`POB 2\`), carburant restant (\`Autonomie 2 heures\`).
+
+:::definition Priorité Absolue du MAYDAY
+L'émission d'un appel MAYDAY suspend immédiatement toutes les autres communications sur la fréquence. Tous les autres aéronefs doivent garder un silence radio absolu (*"Silence Mayday"*).
+:::
+
+### 3. Le Message d'Urgence : PAN PAN
+- **Condition légale** : Concerne la **sécurité d'un aéronef, d'un véhicule ou d'une personne à bord, mais n'exige PAS de secours immédiat** (ex: passager victime d'un malaise cardiaque en vol, égarement sans panne d'essence imminente, baisse anormale de pression d'huile avec moteur tournant encore).
+- **Signal phonétique** : Répéter trois fois l'expression **PAN PAN** (du mot français *"Panne"*).
+- **Structure du message d'urgence** :
+  1. \`PAN PAN, PAN PAN, PAN PAN\`
+  2. Station appelée et indicatif de l'avion.
+  3. Nature du problème et assistance requise (ex: *"Demandons priorité pour atterrissage immédiat avec ambulance à l'arrivée pour malaise cardiaque passager"*).
+  4. Position, niveau de vol et intentions.
+
+### 4. Fréquences et Contacts d'Urgence
+- **Fréquence de contact initial** : Émettre en priorité sur la fréquence de contrôle avec laquelle l'avion est déjà en contact.
+- **Fréquence internationale de détresse VHF** : **121.500 MHz** (veillée en permanence 24h/24 par les centres de contrôle radar militaires et civils, ainsi que par les avions de ligne au-dessus du FL 200).
+- **Code transpondeur de détresse** : **7700** (déclenche immédiatement une alarme visuelle et sonore sur les écrans radar des contrôleurs).`,
+      keyTakeaways: [
+        "MAYDAY (3x) : danger grave et imminent nécessitant secours immédiat (Code 7700).",
+        "PAN PAN (3x) : condition concernant la sécurité sans détresse immédiate.",
+        "Fréquence internationale de détresse : 121.500 MHz.",
+        "Ordre du message : Appel 3x, indicatif, nature du problème, intentions, position/altitude, personnes à bord (POB)."
       ]
     }
   ],
