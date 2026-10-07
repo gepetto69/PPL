@@ -52,9 +52,23 @@ Chaque module officiel dispose de son espace dédié avec son code standard et s
 # Installation des dépendances
 npm install
 
-# Démarrer le serveur de développement
-npm run dev
+# Démarrer le serveur de développement (accessible sur le réseau local / smartphone)
+npm run dev -- --host
 
 # Compiler pour la production
 npm run build
 ```
+
+### 📱 Ouvrir sur Smartphone / GSM
+
+#### Option 1 : Déploiement en ligne direct (Recommandé)
+Vous pouvez héberger l'application gratuitement en 1 clic :
+- **Vercel** ou **Netlify** : connectez le dépôt GitHub `gepetto69/PPL`, il détecte Vite automatiquement et vous donne une URL `https://...` directement ouvrable sur mobile.
+- **GitHub Pages** : le workflow automatisé `.github/workflows/deploy-pages.yml` est déjà configuré dans le projet. Il suffit d'activer GitHub Pages (Source: *GitHub Actions*) dans les paramètres du dépôt.
+
+#### Option 2 : Sur votre réseau Wi-Fi local
+Si votre PC et votre GSM sont connectés au même réseau Wi-Fi :
+1. Lancez : `npm run dev -- --host`
+2. Le terminal affichera une adresse IP de type `http://192.168.x.x:5173`
+3. Ouvrez simplement ce lien dans Safari ou Chrome sur votre smartphone !
+4. Vous pouvez ensuite cliquer sur **"Ajouter à l'écran d'accueil"** pour profiter de l'application en plein écran comme une véritable app native.
